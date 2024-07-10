@@ -37,30 +37,30 @@ const listaAlunos = [{
 ];
 
 /* exemplo de saída de um cadastro de aluno
-Nome do aluno: marcos
-Matéria: matematica
-Notas: 6,5,9.8
-Média: 6.93
-Situação das notas: Reprovado
-Faltas: 7
-Situação das faltas: Reprovado
-Situação final: Reprovado
+ Nome do aluno: marcos
+ Matéria: matematica
+ Notas: 6,5,9.8
+ Média: 6.93
+ Situação das notas: Reprovado
+ Faltas: 7
+ Situação das faltas: Reprovado
+ Situação final: Reprovado
 
-Matéria: portugues
-Notas: 6,9,9
-Média: 8.00
-Situação das notas: Aprovado
-Faltas: 2
-Situação das faltas: Aprovado
-Situação final: Aprovado
+ Matéria: portugues
+ Notas: 6,9,9
+ Média: 8.00
+ Situação das notas: Aprovado
+ Faltas: 2
+ Situação das faltas: Aprovado
+ Situação final: Aprovado
 
-Matéria: fisica
-Notas: 5,4,3
-Média: 4.00
-Situação das notas: Reprovado
-Faltas: 7
-Situação das faltas: Reprovado
-Situação final: Reprovado
+ Matéria: fisica
+ Notas: 5,4,3
+ Média: 4.00
+ Situação das notas: Reprovado
+ Faltas: 7
+ Situação das faltas: Reprovado
+ Situação final: Reprovado
 */
 
 
@@ -77,21 +77,21 @@ function adicionarNomeAluno(){
 //função para adicionar materias do aluno com suas respectivas notas e faltas
 function adicionarMaterias(){
     const materia = prompt('Digite o nome da matéria: ');
-    if (materia === '' || materia === null || materia === undefined){
+    if (materia === '' || materia === " "){
         console.log('matéria inválida, tente novamente');
         return;
     }
-    const nota1 = prompt('Digite a primeira nota: ');
+    const nota1 = prompt('Digite a primeira nota de 0 a 10: ');
     if(nota1 < 0 || nota1 > 10){
         console.log('Nota inválida, digite uma nota entre 0 e 10');
         return;
     }
-    const nota2 = prompt('Digite a segunda nota: ');
+    const nota2 = prompt('Digite a segunda nota de 0 a 10: ');
     if(nota2 < 0 || nota2 > 10){
         console.log('Nota inválida, digite uma nota entre 0 e 10');
         return;
     }
-    const nota3 = prompt('Digite a terceira nota: ');
+    const nota3 = prompt('Digite a terceira nota de 0 a 10: ');
     if(nota3 < 0 || nota3 > 10){
         console.log('Nota inválida, digite uma nota entre 0 e 10');
         return;
@@ -128,7 +128,7 @@ function cadastrarAluno(){
 
     do{
         //logica para adicionar materias uma a uma
-        const addMateria = prompt('Deseja adicionar uma matéria? (S/N) ');
+        const addMateria = prompt('Deseja adicionar uma matéria para esse aluno? (S/N) ');
         switch(addMateria.toLocaleLowerCase()){
             case 's':
                 materiaAdicionado.push(adicionarMaterias());
@@ -153,21 +153,20 @@ function cadastrarAluno(){
         materias: materiaAdicionado
     }
     listaAlunos.push(aluno);
-    console.log('Aluno cadastrado com sucesso!');
+    console.log('Cadastro realizado com sucesso!');
 }
+
 
 
 //inicio do programa com menu de opções
 let opcao = true;
-
-
 do {
     console.log('------------------------------------');
     console.log('Cadastro de alunos, materias, notas e faltas');
     console.log('Escolha uma opção: ');
     console.log('1 - Cadastrar aluno');
     console.log('2 - Listar alunos');
-    console.log('99 - Sair');
+    console.log('9 - Sair');
     let valor = prompt('Digite a opção desejada: ');
     switch(Number(valor)){
         case 1:
@@ -190,7 +189,7 @@ do {
                 
             }
             break;
-        case 99:
+        case 9:
             console.log('Sair do programa');
             opcao = false;
             break;
