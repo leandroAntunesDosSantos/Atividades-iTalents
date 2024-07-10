@@ -27,6 +27,7 @@ function calcular(){
     }
 
     resultado = document.getElementById('resultado');
+
     resultado.innerHTML = `Seu IMC é: ${imc.toFixed(2)} <br> ${resultText}`;
 
 }

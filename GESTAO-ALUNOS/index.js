@@ -1,67 +1,6 @@
 const prompt = require('prompt-sync')();
 
-//lista todos os alunos cadastrados
-//Exemplo de lista de alunos com 3 materias e suas respectivas notas e faltas
-const listaAlunos = [{
-    nome: 'João',
-    materias: [
-        {
-            materia : 'Matemática',    // nome da materia
-            notas : [8.0, 9.0, 10.0],  // 3 notas da materia escolhida pelo aluno
-            media : 9.0,               // < 7 = reprovado
-            situacao_notas: "Aprovado",
-            faltas : 3,           // > 5 = reprovado
-            situacao_faltas: "Aprovado",
-            situacao_final: "Aprovado", // se a media e faltas estiverem aprovadas, o aluno é aprovado na materia
-        },
-        {
-            materia : 'Fisica',
-            notas : [8.0, 9.0, 10.0],
-            media : 9.0,
-            situacao_notas: "Aprovado",
-            faltas : 3,
-            situacao_faltas: "Aprovado",
-            situacao_final: "Aprovado"
-        },
-        {
-            materia : 'Português',
-            notas : [8.0, 9.0, 10.0],
-            media : 9.0,
-            situacao_notas: "Aprovado",
-            faltas : 6,
-            situacao_faltas: "Reprovado",
-            situacao_final: "Reprovado"
-        }
-    ],
-    },
-];
-
-/* exemplo de saída de um cadastro de aluno
- Nome do aluno: marcos
- Matéria: matematica
- Notas: 6,5,9.8
- Média: 6.93
- Situação das notas: Reprovado
- Faltas: 7
- Situação das faltas: Reprovado
- Situação final: Reprovado
-
- Matéria: portugues
- Notas: 6,9,9
- Média: 8.00
- Situação das notas: Aprovado
- Faltas: 2
- Situação das faltas: Aprovado
- Situação final: Aprovado
-
- Matéria: fisica
- Notas: 5,4,3
- Média: 4.00
- Situação das notas: Reprovado
- Faltas: 7
- Situação das faltas: Reprovado
- Situação final: Reprovado
-*/
+const listaAlunos = [];
 
 
 //função para adicionar nome do aluno
@@ -76,38 +15,46 @@ function adicionarNomeAluno(){
 
 //função para adicionar materias do aluno com suas respectivas notas e faltas
 function adicionarMaterias(){
-    const materia = prompt('Digite o nome da matéria: ');
-    if (materia === '' || materia === " "){
+    const materiaAddAluno = prompt('Digite o nome da matéria: ');
+    if (materiaAddAluno === '' || materiaAddAluno === " "){
         console.log('matéria inválida, tente novamente');
         return;
     }
-    const nota1 = prompt('Digite a primeira nota de 0 a 10: ');
+    if (materiaAddAluno === null || materiaAddAluno === undefined){
+        console.log('matéria inválida, tente novamente');
+        return;
+    }
+    let nota1 = prompt('Digite a primeira nota de 0 a 10: ');
     if(nota1 < 0 || nota1 > 10){
         console.log('Nota inválida, digite uma nota entre 0 e 10');
         return;
     }
-    const nota2 = prompt('Digite a segunda nota de 0 a 10: ');
+    let nota2 = prompt('Digite a segunda nota de 0 a 10: ');
     if(nota2 < 0 || nota2 > 10){
         console.log('Nota inválida, digite uma nota entre 0 e 10');
         return;
     }
-    const nota3 = prompt('Digite a terceira nota de 0 a 10: ');
+    let nota3 = prompt('Digite a terceira nota de 0 a 10: ');
     if(nota3 < 0 || nota3 > 10){
         console.log('Nota inválida, digite uma nota entre 0 e 10');
         return;
     }
-    const media = ((parseFloat(nota1) + parseFloat(nota2) + parseFloat(nota3)) / 3).toFixed(2);
-    const faltas = prompt('Digite o número de faltas: ');
-    if(faltas < 0){
+    const media = +((parseFloat(nota1) + parseFloat(nota2) + parseFloat(nota3)) / 3).toFixed(2);
+    if(media < 0 || media > 10 || isNaN(media) || media === null || media === undefined){
+        console.log('As notas digitas são inválidas, tente novamente');
+        return;
+    }
+    const faltas = +prompt('Digite o número de faltas: ');
+    if(faltas < 0 || isNaN(faltas) || faltas === null || faltas === undefined){
         console.log('Número de faltas inválido, digite um número maior ou igual a 0');
         return
     }
     const situacao_notas = media >= 7 ? 'Aprovado' : 'Reprovado';
     const situacao_faltas = faltas <= 5 ? 'Aprovado' : 'Reprovado';
     const situacao_final = situacao_notas === 'Aprovado' && situacao_faltas === 'Aprovado' ? 'Aprovado' : 'Reprovado';
-    
+
     return {
-        materia,
+        materia: materiaAddAluno,
         notas: [parseFloat(nota1), parseFloat(nota2), parseFloat(nota3)],
         situacao_notas,
         media,
@@ -123,6 +70,10 @@ function cadastrarAluno(){
     let verificacao = true;
     //logica basica para adicionar nome do aluno
     const nomeadicionado = adicionarNomeAluno();
+    if (nomeadicionado.trim() === ''){
+        console.log('Nome inválido, tente novamente');
+        return;
+    }
     //array de materias adicionadas
     const materiaAdicionado = []
 
@@ -131,7 +82,12 @@ function cadastrarAluno(){
         const addMateria = prompt('Deseja adicionar uma matéria para esse aluno? (S/N) ');
         switch(addMateria.toLocaleLowerCase()){
             case 's':
-                materiaAdicionado.push(adicionarMaterias());
+                let materia = adicionarMaterias()
+                if (materia === undefined){
+                    console.log('Matéria inválida, tente novamente');
+                    break;
+                }
+                materiaAdicionado.push(materia);
                 break;
             case 'n':
                 verificacao = false;
@@ -186,7 +142,7 @@ do {
                     console.log(' Situação final: ' + listaAlunos[i].materias[j].situacao_final);
                     console.log('  ');
                 }
-                
+
             }
             break;
         case 9:
