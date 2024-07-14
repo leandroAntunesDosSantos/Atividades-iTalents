@@ -8,7 +8,7 @@ let listaDeContas = [];
 
 let funcionalidade = true;
 
-//para executar algumas funcionalidades é necessário criar uma conta corrente ou poupança
+//Para executar algumas funcionalidades é necessário criar uma conta corrente ou poupança
 //e através dessas contas realizar operações para isso é necessário o número da conta
 //que é uma variável global que é incrementada a cada conta criada
 //Portanto, a primeira conta tem numero 1 a segunda numero 2 e assim por diante
@@ -157,7 +157,7 @@ do {
                     break;
                 }
                 const rendimentoConvertido = valorRendimento / 100;
-                contaRendimento.aplicaRendimento(rendimentoConvertido);
+                contaRendimento.aplicaRendimento(Number(rendimentoConvertido));
                 break;
             }
         case 8:
