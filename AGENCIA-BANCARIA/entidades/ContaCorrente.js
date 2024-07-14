@@ -9,7 +9,7 @@ class ContaCorrente extends Conta{
     // foi colocado como o cliente responsavel por determinar a taxa de juros,
     // mas isso é feito internamente dentro do banco considerando o perfil do cliente
     // e a situação economica do mercado.
-    // Juros não podem ser negativos
+    // Juros não podem ser negativos para o investimento em questão
     aplicaJuros(taxaDeJuros){
         if(taxaDeJuros < 0){
             console.log('Juros não podem ser negativos');
