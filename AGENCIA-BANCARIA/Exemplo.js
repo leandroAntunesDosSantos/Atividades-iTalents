@@ -5,7 +5,6 @@
 // Número da conta: 1
 // Titular: fernanda
 // Saldo: 1000
-// Juros: 0
 // Tipo de conta: Conta Corrente
 
 // 2 - Criar Conta Poupança
@@ -13,7 +12,6 @@
 // Número da conta: 2
 // Titular: marcela
 // Saldo: 500
-// Rendimento: 0
 // Tipo de conta: Conta Poupança
 
 // 3 - Depositar
