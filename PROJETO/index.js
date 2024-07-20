@@ -16,7 +16,7 @@ let fase2 = false;
 let fase3 = false;
 let faseFinal = false;
 
-console.log(`Em uma tribo distante heron é um jovem guerreiro que acaba de receber a missao de 
+console.log(`Em uma tribo distante Heron é um jovem guerreiro que acaba de receber a missão de 
 defender sua tribo que esta sendo constantemente atacada por um grupo de guerreiros inimigos. 
 Heron é um guerreiro habilidoso e corajoso, mas ele precisa de sua ajuda para vencer essa batalha. ' 
 Você aceita essa missão?`);
@@ -33,20 +33,20 @@ if (resposta === '1') {
 
 
 if(iniciar){
-    faseIntrodutoria(heroiHeron1);
+    //faseIntrodutoria(heroiHeron1);
     if (faseIntrodutoria(heroiHeron1)){
         fase2 = true;
     }
 }
 
 if (fase2){
-    fase22(heroiElune1);
+    //fase22(heroiElune1);
     if (fase22(heroiElune1)){
         fase3 = true;
     }
 }
 if (fase3){
-    fase33(heroiElune1, heroiHeron1);
+    //fase33(heroiElune1, heroiHeron1);
     if (fase33(heroiElune1, heroiHeron1)){
         faseFinal = true;
     }
