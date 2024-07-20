@@ -3,9 +3,12 @@ const faseIntrodutoria = require('./fases/faseIntrodutoria');
 const HeroiHeron = require('./personagens/HeroiHeron');
 const HeroiElune = require('./personagens/HeroiElune');
 const fase22 = require('./fases/fase2');
+const fase33 = require('./fases/fase3');
+const final = require('./fases/faseFinal');
 
-const heroiHeron = new HeroiHeron('Heron', 1000, 20, 5);
-const heroiElune = new HeroiElune('Elune', 1000, 20, 5);
+
+const heroiHeron1 = new HeroiHeron('Heron', 1000, 20, 5);
+const heroiElune1 = new HeroiElune('Elune', 1000, 20, 5);
 
 
 let iniciar = false;
@@ -30,20 +33,26 @@ if (resposta === '1') {
 
 
 if(iniciar){
-    faseIntrodutoria(heroiHeron);
-    if (faseIntrodutoria(heroiHeron)){
+    faseIntrodutoria(heroiHeron1);
+    if (faseIntrodutoria(heroiHeron1)){
         fase2 = true;
     }
 }
 
 if (fase2){
-    fase22(heroiElune);
-    if (fase22(heroiElune)){
+    fase22(heroiElune1);
+    if (fase22(heroiElune1)){
         fase3 = true;
     }
 }
 if (fase3){
-    console.log('Heron: Elune voce voltou, eu sabia que voce conseguiria.');
-    console.log('Elune: Heron, eu nao poderia deixar minha tribo ser destruida. Estou um pouco ferida mas estou bem.');
+    fase33(heroiElune1, heroiHeron1);
+    if (fase33(heroiElune1, heroiHeron1)){
+        faseFinal = true;
+    }
+}
+
+if (faseFinal){
+    final(heroiHeron1, heroiElune1);
 }
 
