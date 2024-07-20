@@ -9,7 +9,7 @@ class ContaPoupanca extends Conta{
     // foi colocado como o cliente responsavel por determinar o rendimento,
     // mas isso é feito internamente dentro do banco levando em conta o perfil do cliente
     // e a situação econõmica do mercado.
-    // Rendimento não pode ser negativo para o inestimento em questão
+    // Rendimento não pode ser negativo para o investimento em questão
     aplicaRendimento(rendimento){
         if(rendimento < 0){
             console.log('Rendimento não pode ser negativo');
