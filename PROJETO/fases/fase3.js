@@ -1,20 +1,32 @@
 const InimigosComuns = require("../personagens/InimigosComuns");
+const prompt = require('prompt-sync')();
 
+const roteiroFase4 = [
+    'Heron: Elune voce voltou, eu sabia que voce conseguiria.',
+    'Elune: Heron, eu nao poderia deixar minha tribo ser destruida. Estou um pouco ferida mas estou bem.',
+    'Heron: Eu sabia que voce era forte o suficiente para vencer essa batalha.',
+    'Elune: Obrigada Heron, mas ainda nao acabou. O lider dos trolls ainda esta vivo.',
+    'Heron: Eu sei, eu vi ele fugindo para a montanha.',
+    'Elune: Vamos Heron, temos que acabar com ele.',
+    'Heron: Ainda não é hora elune eu preciso me preparar para essa batalha. Precisamos de equipamentos melhores.',
+    'Elune: Voce tem razao, vamos para a cidade dos elfos, la podemos conseguir equipamentos melhores.',
+    'Heron e Elune partem para a cidade dos elfos para conseguir equipamentos melhores mas ao chegar la eles descobrem que a cidade foi atacada pelos orcs.',
+    'Heron: O que aconteceu aqui?',
+    'Elune: Os orcs atacaram a cidade dos elfos, precisamos ajudar.',
+    'Heron: Vamos Elune, temos que acabar com eles.'
+];
+
+const roteiroFase5 = [
+    'Heron e Elune derrotaram os orcs e salvaram a cidade dos elfos.',
+    'Elune: Conseguimos Heron, salvamos a cidade dos elfos.',
+    'Heron: Sim, mas ainda temos que acabar com o lider dos trolls.',
+    'Elune: Vamos Heron, temos que acabar com ele.'
+];
 
 function fase3(heroElune, heroHeron){
-    console.log('Heron: Elune voce voltou, eu sabia que voce conseguiria.');
-    console.log('Elune: Heron, eu nao poderia deixar minha tribo ser destruida. Estou um pouco ferida mas estou bem.');
-    console.log('Heron: Eu sabia que voce era forte o suficiente para vencer essa batalha.');
-    console.log('Elune: Obrigada Heron, mas ainda nao acabou. O lider dos trolls ainda esta vivo.');
-    console.log('Heron: Eu sei, eu vi ele fugindo para a montanha.');
-    console.log('Elune: Vamos Heron, temos que acabar com ele.');
-    console.log('Heron: Ainda não é hora elune eu preciso me preparar para essa batalha. Precisamos de equipamentos melhores.');
-    console.log('Elune: Voce tem razao, vamos para a cidade dos elfos, la podemos conseguir equipamentos melhores.');
-
-    console.log('Heron e Elune partem para a cidade dos elfos para conseguir equipamentos melhores mas ao chegar la eles descobrem que a cidade foi atacada pelos orcs.');
-    console.log('Heron: O que aconteceu aqui?');
-    console.log('Elune: Os orcs atacaram a cidade dos elfos, precisamos ajudar.');
-    console.log('Heron: Vamos Elune, temos que acabar com eles.');
+    for (let i = 0; i < roteiroFase4.length; i++) {
+        prompt(roteiroFase4[i]);
+    }
 
     const orc = new InimigosComuns('Orc', 100, 20, 5);
 
@@ -40,10 +52,9 @@ function fase3(heroElune, heroHeron){
         console.log(`O orc ataca Heron com um golpe de machado causando ${danoInimigo2} de dano. Vida de Heron: ${heroHeron.vida}`);
 
         if(orc.vida <= 0){
-            console.log('Heron e Elune derrotaram os orcs e salvaram a cidade dos elfos.');
-            console.log('Elune: Conseguimos Heron, salvamos a cidade dos elfos.');
-            console.log('Heron: Sim, mas ainda temos que acabar com o lider dos trolls.');
-            console.log('Elune: Vamos Heron, temos que acabar com ele.');
+            for (let i = 0; i < roteiroFase5.length; i++) {
+                prompt(roteiroFase5[i]);
+            }
             return true;
         }
         if (heroElune.vida <= 0 || heroHeron.vida <= 0){
