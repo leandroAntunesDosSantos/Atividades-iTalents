@@ -1,34 +1,53 @@
 const Chefes = require("../personagens/Chefes");
+const prompt = require('prompt-sync')();
+
+const roteiroFase6 = [
+    'Heron e Elune se preparam para partir de manha cedo para a batalha contra o lider dos trolls.',
+    'Heron: Elune, eu estou pronto para a batalha.',
+    'Elune: Eu tambem estou pronta Heron, vamos acabar com ele.',
+    'Heron: Que estranho Elune, eu sinto que algo esta errado.',
+    'Elune: O que voce quer dizer Heron?',
+    'Heron: Eu nao sei, mas eu sinto que algo esta errado. Não tem ninguem aqui para onde foram',
+    'Elune: Eu tambem estou sentindo algo estranho Heron.',
+    'Heron: Elune, cuidado!',
+    'Rei dos trolls: Sejam bem vindos guerreiros, eu estava esperando por voces.',
+    'Heron: Quem é voce?',
+    'Rei dos trolls: Eu sou o lider dos trolls, eu sou o rei dos trolls. Tem uma pessoa muito especial para voces aqui.',
+    'Heron: Quem?',
+    'Rei dos trolls: Terenas, venha aqui.',
+    'Terenas: Heron, Elune, me ajudem por favor.',
+    'Heron: Terenas? Elune eu pensei que voce tinha acabado com ela.',
+    'Elune: Me desculpe Heron, eu nao consegui fazer isso.',
+    'Heron: Terenas o que aconteceu? Por que voce esta aqui?',
+    'Terenas: Eu fui capturada pelos trolls, eles me obrigaram a trair voces.',
+    'Rei dos trolls: Isso mesmo, eu obriguei ela a trair voces. Agora calem a boca criaturas pateticas! Vou fazer uma bela de uma oferenda para os deuses.',
+    'Terenas: Por favor me ajudem, eu nao queria fazer isso. Me perdoe... irmã.',
+    'Elune: Você disse irmã?',
+    'Terenas: Sim, eu sou sua irmã Elune. Eu não queria fazer isso, eu fui obrigada.',
+    'Heron: Elune, o que vamos fazer?',
+    'Elune: Eu não sei Heron, eu não sei o que fazer.',
+    'Rei dos trolls: Silencio! Vou fazer uma oferenda para os deuses, e vocês serão a oferenda.',
+    'Heron: Não, não vamos deixar isso acontecer.'
+];
+
+const roteiroFinal = [
+    'Heron e Elune derrotaram o lider dos trolls e salvaram Terenas.',
+    'Elune: Conseguimos Heron, salvamos Terenas. Me ajude a levar ela para casa.',
+    'Heron: Sim, vamos levar ela para casa.',
+    'Terenas: Obrigada terenas minha grande irmã, se não fosse voces eu estaria morta e minha alma seria sacrificada para os deuses.',
+    'Heron: Nossa aldeia foi muito prejudicada por causa de voce Terenas',
+    'Terenas: Eu sei Heron, e vou pagar pelo que eu fiz',
+    'Elune: Vamos levar ela para casa Heron, ela precisa de cuidados.',
+    'Terenas foi julgada pelo conselho da tribo e foi condenada a ser exilada da tribo.',
+    'Heron e Elune salvaram a tribo e foram condecorados herois.',
+    'Fim de jogo'
+];
 
 function faseFinal(heroiHeron, heroiElune) {
-    console.log('heron e elune se preparam para partir de manha cedo para a batalha contra o lider dos trolls.');
-    console.log('Heron: Elune, eu estou pronto para a batalha.');
-    console.log('Elune: Eu tambem estou pronta Heron, vamos acabar com ele.');
-    console.log('Heron: Que estranho Elune, eu sinto que algo esta errado.');
-    console.log('Elune: O que voce quer dizer Heron?');
-    console.log('Heron: Eu nao sei, mas eu sinto que algo esta errado. Não tem ninguem aqui para onde foram');
-    console.log('Elune: Eu tambem estou sentindo algo estranho Heron.');
-    console.log('Heron: Elune, cuidado!');
-    console.log('Rei dos trolls: Sejam bem vindos guerreiros, eu estava esperando por voces.');
-    console.log('Heron: Quem é voce?');
-    console.log('Rei dos trolls: Eu sou o lider dos trolls, eu sou o rei dos trolls. Tem uma pessoa muito especial para voces aqui.');
-    console.log('Heron: Quem?');
-    console.log('Rei dos trolls: Terenas, venha aqui.');
-    console.log('Terenas: Heron, Elune, me ajudem por favor.');
-    console.log('Heron: Terenas? Elune eu pensei que voce tinha acabado com ela.');
-    console.log('Elune: me desculpe Heron, eu nao consegui fazer isso.');
-    console.log('Heron: Terenas o que aconteceu? Por que voce esta aqui?');
-    console.log('Terenas: Eu fui capturada pelos trolls, eles me obrigaram a trair voces.');
-    console.log('Rei dos trolls: Isso mesmo, eu obriguei ela a trair voces. Agora calem a boca criaturas pateticas! Vou fazer uma bela de uma oferenda para os deuses.');
-    console.log('Terenas: Por favor me ajudem, eu nao queria fazer isso. Me perdoe... irmã.');
-    console.log('Elune: Você disse irmã?');
-    console.log('Terenas: Sim, eu sou sua irmã Elune. Eu não queria fazer isso, eu fui obrigada.');
-    console.log('Heron: Elune, o que vamos fazer?');
-    console.log('Elune: Eu não sei Heron, eu não sei o que fazer.');
-    console.log('Rei dos trolls: Silencio! Vou fazer uma oferenda para os deuses, e vocês serão a oferenda.');
-    console.log('Heron: Não, não vamos deixar isso acontecer.');
-
-    const liderTrolls = new Chefes('Rei dos trolls', 100, 20, 5);
+    for (let i = 0; i < roteiroFase6.length; i++) {
+        prompt(roteiroFase6[i]);
+    }
+    const liderTrolls = new Chefes('Rei dos trolls', 200, 20, 5);
 
     while (heroiHeron.vida > 0 && heroiElune.vida > 0 && liderTrolls.vida > 0) {
         //Elune atacando o lider dos trolls
@@ -52,16 +71,9 @@ function faseFinal(heroiHeron, heroiElune) {
         console.log(`O lider dos trolls ataca Heron com um golpe de machado causando ${danoInimigo2} de dano. Vida de Heron: ${heroiHeron.vida}`);
 
         if (liderTrolls.vida <= 0) {
-            console.log('Heron e Elune derrotaram o lider dos trolls e salvaram Terenas.');
-            console.log('Elune: Conseguimos Heron, salvamos Terenas. Me ajude a levar ela para casa.');
-            console.log('Heron: Sim, vamos levar ela para casa.');
-            console.log('Terenas: Obrigada terenas minha grande irmã, se não fosse voces eu estaria morta e minha alma seria sacrificada para os deuses.');
-            console.log('Heron: Nossa aldeia foi muito prejudicada por causa de voce Terenas');
-            console.log('Terenas: Eu sei Heron, e vou pagar pelo que eu fiz');
-            console.log('Elune: Vamos levar ela para casa Heron, ela precisa de cuidados.');
-            console.log('Terenas foi julgada pelo conselho da tribo e foi condenada a ser exilada da tribo.');
-            console.log('Heron e Elune salvaram a tribo e foram condecorados herois.');
-            console.log('Fim de jogo');
+            for (let i = 0; i < roteiroFinal.length; i++) {
+                prompt(roteiroFinal[i]);
+            }
             return true;
         }
         if (heroiElune.vida <= 0 || heroiHeron.vida <= 0) {
