@@ -68,9 +68,12 @@ function lutaCapanga(){
                         }
                         break;
                     case '2':
-                        verificar = false;
-                        prompt('Fim de jogo.');
-                        return false;
+                        let confirmacao = prompt('Você realmente deseja desistir da missão? 1 - Sim ');
+                        if(confirmacao === '1'){
+                            prompt('Heron desiste da missão e a aldeia é destruida. Fim de jogo.');
+                            verificar = false;
+                            return false;
+                        }
                     default:
                         prompt('Digite um número válido');
                         break;

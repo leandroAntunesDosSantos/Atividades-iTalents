@@ -23,9 +23,13 @@ function faseInicial(){
                 verificar = false;
                 return true;
             case '2':
-                verificar = false;
-                prompt('Até mais guerreiro. Que os deuses estejam com você. Fim de jogo.');
-                return false;
+                let confirmacao = prompt('Você realmente deseja desistir da missão? 1 - Sim ');
+                if(confirmacao === '1'){
+                    prompt('Heron desiste da missão e a aldeia é destruida. Fim de jogo.');
+                    verificar = false;
+                    return false;
+                }
+                break;
             default:
                 prompt('Digite um número válido! ');
                 break;
