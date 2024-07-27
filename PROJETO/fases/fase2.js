@@ -56,8 +56,11 @@ function lutarEluneTerenas(){
                 }
             }
             if (resposta === '2') {
-                console.log('Elune foi derrotado e a tribo foi destruida. Fim de jogo.');
-                return false;
+                let confirmacao = prompt('Deseja sair do jogo? 1 - Sim ');
+                if (confirmacao === '1') {
+                    console.log('Elune foi derrotada e a tribo foi destruida. Fim de jogo.');
+                    return false;
+                }
             }
             return false;
         }
