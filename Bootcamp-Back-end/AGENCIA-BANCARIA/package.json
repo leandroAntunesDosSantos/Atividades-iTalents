@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "agencia-bancaria": "file:",
     "prompt-sync": "^4.2.0"
   }
 }
